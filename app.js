@@ -18,7 +18,7 @@ mongoose.connect(
 .catch((err) => {
     console.log(err);
 });
-const course  = mongoose.model("hackethons", new mongoose.Schema(
+const course  = mongoose.model("hackathons", new mongoose.Schema(
     {
         teamId: String,
         teamName: String,
@@ -40,10 +40,10 @@ app.post("/add-hackathon", async (request, response) => {
     await course.create(request.body)
     response.json({"status":"success"})
 })
-app.get("/view-hackathon", async (request, response) => {
+app.post("/view-hackathon", async (request, response) => {
     const data = await course.find();
     response.json(data);
 });
- app.listen(2000, () => {
+ app.listen(3000, () => {
         console.log("Server Started on Port 2000");
  })
